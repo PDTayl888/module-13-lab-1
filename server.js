@@ -15,9 +15,12 @@ app.get('/', async(req, res) => {
     try {
         await client.connect();
 
-        res.status(200).json()
+        res.status(200).json({ message: "connect to mongoDb"});
     } catch (error) {
-
+        console.error("MongoDb connection error: ", error);
+        res.status(500).json({ message: "failed to connect to mongoDb"});
+    } finally {
+        await client.close();
     }
 });
 
