@@ -9,3 +9,8 @@ const PORT = 3001;
 
 const uri = process.env.MONGO_URI;
 
+const client = new MongoClient(uri);
+
+app.listen(PORT, () => {
+    console.log(`server running at localhost:${PORT}`);
+});
