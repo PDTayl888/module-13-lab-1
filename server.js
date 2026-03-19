@@ -11,6 +11,21 @@ const uri = process.env.MONGO_URI;
 
 const client = new MongoClient(uri);
 
+app.get('/', async(req, res) => {
+    try {
+        await client.connect();
+
+        res.status(200).json()
+    } catch (error) {
+
+    }
+});
+
+
+
+
+
+
 app.listen(PORT, () => {
     console.log(`server running at localhost:${PORT}`);
 });
